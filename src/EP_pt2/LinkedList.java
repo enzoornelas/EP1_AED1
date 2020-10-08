@@ -52,8 +52,9 @@ public class LinkedList {
 
 
     public static void main(String[] args) throws Exception {
+        long startTime = System.currentTimeMillis();
         for (int i=1000; i<=99000; i+=1000) {
-            File file = new File("D:\\entradas\\tarefas"+i+".txt");
+            File file = new File("/Users/enzo/Downloads/entradas/tarefas"+i+".txt");
             Scanner sc = new Scanner(file);
             LinkedList list = new LinkedList();
             list.addFirst(new Node(sc.nextInt(),null));
@@ -65,7 +66,7 @@ public class LinkedList {
 
 
             try {
-                File myObj = new File("D:\\saida_2\\tarefas"+i+".txt");
+                File myObj = new File("/Users/enzo/IdeaProjects/EP1_AED1/src/EP_pt2/saidas_2/tarefas"+i+".txt");
                 if (myObj.createNewFile()) {
                     System.out.println("File created: " + myObj.getName());
                 } else {
@@ -77,8 +78,10 @@ public class LinkedList {
             }
 
             try {
-                FileWriter myWriter = new FileWriter("D:\\saida_2\\tarefas"+i+".txt");
-                myWriter.write(list.toString()+"\nTempo total: "+System.currentTimeMillis());
+                FileWriter myWriter = new FileWriter("/Users/enzo/IdeaProjects/EP1_AED1/src/EP_pt2/saidas_2/tarefas"+i+".txt");
+                long endtime = System.currentTimeMillis();
+                long duration = (endtime-startTime);
+                myWriter.write(list.toString()+"\nTempo total: "+duration);
                 myWriter.close();
                 System.out.println("Successfully wrote to the file.");
             } catch (IOException e) {
